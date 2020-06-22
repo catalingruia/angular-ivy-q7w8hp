@@ -1,3 +1,5 @@
 <div>
-    {{User.displayName}}
+    <div *ngIf="(isAuthenticated$ | async)">
+       pula e on
+    </div>
 </div>

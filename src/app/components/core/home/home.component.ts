@@ -3,6 +3,8 @@ import { TestService } from 'src/app/services/test.service';
 import { map } from 'rxjs/operators';
 import { getAllLifecycleHooks } from '@angular/compiler/src/lifecycle_reflector';
 import { User } from 'firebase';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -11,23 +13,16 @@ import { User } from 'firebase';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private fire:TestService) { }
+  isAuthenticated$:Observable<boolean>;
+  constructor(private fire: TestService,private authService: AuthService ) { 
+    this.isAuthenticated$ = authService.isAuthenticated$;
+  }
 
   test: app.models.Test;
 
-User: User;
+  User: User;
   ngOnInit(): void {
-  this.User = JSON.parse(localStorage.getItem('user'));
-    // this.fire.getTest('-MA2x-WlxdIxY92TgxXL').valueChanges().subscribe(data =>{
-    //   this.test = data;
-    //   console.log(this.test);
-    // });
-
-    
-  }
-  getOne(){
-    
+    this.User = JSON.parse(localStorage.getItem('user'));
 
   }
-
 }
