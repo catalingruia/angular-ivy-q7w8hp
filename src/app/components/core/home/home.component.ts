@@ -16,13 +16,24 @@ export class HomeComponent implements OnInit {
   isAuthenticated$:Observable<boolean>;
   constructor(private fire: TestService,private authService: AuthService ) { 
     this.isAuthenticated$ = authService.isAuthenticated$;
+    
   }
 
-  test: app.models.Test;
+  test: app.models.Test[];
 
   User: User;
   ngOnInit(): void {
     this.User = JSON.parse(localStorage.getItem('user'));
+    this.authService.UserData.subscribe(userData => this.User = userData);
 
+    this.fire.getAll().valueChanges().subscribe(result => this.test = result);
+  }
+
+  login(){
+    this.authService.loginWithGoogle();
+  }
+
+  logout(){
+    this.authService.logout();
   }
 }

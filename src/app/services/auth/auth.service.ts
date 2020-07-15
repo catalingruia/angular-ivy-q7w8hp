@@ -13,7 +13,7 @@ export class AuthService {
   user: User;
   private isAuthenticatedSubject$ = new BehaviorSubject<boolean>(false);
   public isAuthenticated$ = this.isAuthenticatedSubject$.asObservable();
-
+  public UserData = new BehaviorSubject<User>(null);
 
   constructor(public afAuth: AngularFireAuth, public router: Router) {
 
@@ -22,9 +22,11 @@ export class AuthService {
         this.user = user;
         this.isAuthenticatedSubject$.next(true);
         localStorage.setItem('user', JSON.stringify(this.user));
+        this.UserData.next(this.user);
       } else {
         localStorage.setItem('user', null);
         this.isAuthenticatedSubject$.next(false);
+        this.UserData.next(null);
       }
     })
   }

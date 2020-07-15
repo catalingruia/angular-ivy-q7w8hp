@@ -23,5 +23,11 @@ export class TestService {
      return this.testRef;
    }
 
+   getAll(){
+     this.testsRef = this.db.list('test');
+     return this.testsRef;
+   }
+
+
 }
 

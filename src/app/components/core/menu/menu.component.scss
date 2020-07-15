@@ -1,0 +1,20 @@
+
+ul li{
+    list-style: none;
+    float: right;
+    padding: 0 20px;
+    
+}
+
+nav{
+    width: 100%;
+    background-color: red;
+    line-height: 10px;
+    border-bottom: inset;
+    border-bottom-width: 1px;
+    padding: 6px 8px;
+    color: #656565;
+    position: fixed;
+    z-index: 999;
+    height: 65.5px;
+}

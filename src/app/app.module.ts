@@ -15,6 +15,9 @@ import { TestService } from './services/test.service';
 import { UserLoginComponent } from './components/pages/user/user-login/user-login.component';
 import { UserRegisterComponent } from './components/pages/user/user-register/user-register.component';
 import { UserVerifyEmailComponent } from './components/pages/user/user-verify-email/user-verify-email.component';
+import { MenuComponent } from './components/core/menu/menu.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 @NgModule({
@@ -27,10 +30,12 @@ import { UserVerifyEmailComponent } from './components/pages/user/user-verify-em
     UserLoginComponent,
     UserRegisterComponent,
     UserVerifyEmailComponent,
+    MenuComponent,
 
   ],
   imports: [
     BrowserModule,
+    NgbModule,
     FormsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
